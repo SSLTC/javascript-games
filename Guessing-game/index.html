@@ -11,7 +11,21 @@
     <title>Guessing-game</title>
 </head>
 <body>
-    <header><h1>GUESSING GAME</h1></header>
-    <main><figure><figcaption></figcaption></figure></main>
+    <header>
+        <h1>GUESSING GAME</h1>
+    </header>
+    
+    <main>
+        <figure>
+            <figcaption></figcaption>
+        </figure>
+
+        <section id="container">
+            <label id="lblGuess" for="guess">Guess a number<br />(between 1 and 30):</label>
+            <input type="number" id="guess" name="guess" min="1" max="30">
+
+            <p class="result"></p>
+        </section>
+    </main>
 </body>
 </html>

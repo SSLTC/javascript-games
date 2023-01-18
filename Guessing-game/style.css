@@ -18,5 +18,14 @@
   padding-left: 0.5rem;
   font-size: 0.5rem;
 }
+* body main #container {
+  margin-top: 2rem;
+  margin-inline: auto;
+  width: 80vw;
+  text-align: center;
+}
+* body main #container #lblGuess {
+  font-size: 0.8rem;
+}
 
 /*# sourceMappingURL=style.css.map */

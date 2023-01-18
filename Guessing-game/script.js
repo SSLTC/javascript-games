@@ -7,3 +7,4 @@ elFigure.insertBefore(elImg, elFigure.firstChild);
 
 const elFigCaption = document.querySelector("figcaption");
 elFigCaption.innerHTML = "Three pies whereof only one left, who will get it?"
+

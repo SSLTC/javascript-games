@@ -30,6 +30,18 @@
                 padding-left: 0.5rem;
                 font-size: 0.5rem;
             }
+
+            #container {
+                margin-top: 2rem;
+                margin-inline: auto;
+                width: 80vw;
+                text-align: center;
+
+                #lblGuess {
+                    font-size: 0.8rem;
+                }
+
+            }
         }
     }
 }
