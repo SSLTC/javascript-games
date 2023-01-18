@@ -19,13 +19,19 @@
   font-size: 0.5rem;
 }
 * body main #container {
-  margin-top: 2rem;
+  margin-top: 1.7rem;
   margin-inline: auto;
   width: 80vw;
   text-align: center;
 }
 * body main #container #lblGuess {
   font-size: 0.8rem;
+}
+* body main #container #result {
+  margin-block: 1.7rem;
+  padding: 0.2rem;
+  border: 1px solid #000000;
+  background-color: #ffa500;
 }
 
 /*# sourceMappingURL=style.css.map */
