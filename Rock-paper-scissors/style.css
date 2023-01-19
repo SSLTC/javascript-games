@@ -59,4 +59,13 @@
 }
 * body main #result {
   text-align: center;
+}
+* body main .greenBackgroundColor {
+  background-color: #008000;
+}
+* body main .orangeBackgroundColor {
+  background-color: #ffa500;
+}
+* body main .redBackgroundColor {
+  background-color: #ff0000;
 }/*# sourceMappingURL=style.css.map */

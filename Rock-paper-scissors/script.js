@@ -73,6 +73,19 @@ const playGame = () => {
 
 const showMessage = (msg) => {
     const elResult = document.querySelector("#result");
+
+    if(msg.indexOf("WON") !== -1) {
+        elResult.classList.add("greenBackgroundColor");
+    } else if(msg.indexOf("DRAW") !== -1) {
+        elResult.classList.add("orangeBackgroundColor");
+    } else if(msg.indexOf("LOSE") !== -1) {
+        elResult.classList.add("redBackgroundColor");
+    } else {
+        elResult.classList.remove("greenBackgroundColor");
+        elResult.classList.remove("orangeBackgroundColor");
+        elResult.classList.remove("redBackgroundColor");
+    }
+
     elResult.innerHTML = msg;
 }
 
