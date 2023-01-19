@@ -6,6 +6,12 @@
 * body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+@media (min-width: 992px) {
+  * body {
+    margin-inline: auto;
+    width: 60vw;
+  }
+}
 * body header h1 {
   font-size: 1.3rem;
   text-align: center;
@@ -21,7 +27,7 @@
 * body main #container {
   margin-top: 1.7rem;
   margin-inline: auto;
-  width: 80vw;
+  width: 80%;
   text-align: center;
 }
 * body main #container #lblGuess {

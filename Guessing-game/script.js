@@ -10,7 +10,7 @@ elFigure.insertBefore(elImg, elFigure.firstChild);
 const elFigCaption = document.querySelector("figcaption");
 elFigCaption.innerHTML = "Three pies whereof only one left, who will get it?"
 
-const randomNumber = 3 //getRndInteger(1, 30);
+const randomNumber = getRndInteger(1, 30);
 
 const elResult = document.querySelector("#result");
 elResult.addEventListener("click", () => {

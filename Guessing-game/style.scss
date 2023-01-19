@@ -1,3 +1,5 @@
+@use "../../modules/scss-modules/media-queries/media-queries";
+
 * {
     box-sizing: border-box;
     margin: 0px;
@@ -5,6 +7,11 @@
 
     body { 
         font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+        @include media-queries.screen-min(media-queries.$screen-lg){
+            margin-inline: auto;
+            width: 60vw;
+        }
 
         header {
             h1 {
@@ -27,7 +34,7 @@
             #container {
                 margin-top: 1.7rem;
                 margin-inline: auto;
-                width: 80vw;
+                width: 80%;
                 text-align: center;
 
                 #lblGuess {
