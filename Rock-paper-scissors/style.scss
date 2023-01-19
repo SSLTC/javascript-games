@@ -5,8 +5,18 @@
     margin: 0px;
     padding: 0px;
 
-    body { 
+    body {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+        @include media-queries.screen-min(media-queries.$screen-md){
+            margin: 25% auto;
+            width: 70vw;
+        }
+
+        @include media-queries.screen-min(media-queries.$screen-lg){
+            margin: 25% auto;
+            width: 50vw;
+        }
 
         header {
             margin-top: 1rem;
@@ -18,10 +28,42 @@
 
                 span {
                     display: block;
+
                     @include media-queries.screen-min(media-queries.$screen-md){
                         display: inline;
                     }
                 }
+            }
+        }
+
+        main {
+            margin-block: 1rem;
+            background-color: rgb(186, 20, 212);
+
+            #game, #result {
+                padding: 1rem;
+
+                .key {
+                    font-weight: bold;
+                }
+            }
+
+            #game span {
+                display: inline-block;
+
+                @include media-queries.screen-min(media-queries.$screen-md){
+                    display: inline;
+                }
+            }
+
+            #choices {
+                font-size: 6rem;
+                text-align: center;
+                background-color: rgb(202, 14, 231);
+            }
+
+            #result {
+                text-align: center;
             }
         }
     }

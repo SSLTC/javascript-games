@@ -6,6 +6,18 @@
 * body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+@media (min-width: 768px) {
+  * body {
+    margin: 25% auto;
+    width: 70vw;
+  }
+}
+@media (min-width: 992px) {
+  * body {
+    margin: 25% auto;
+    width: 50vw;
+  }
+}
 * body header {
   margin-top: 1rem;
   margin-right: 1rem;
@@ -21,4 +33,30 @@
   * body header h1 span {
     display: inline;
   }
+}
+* body main {
+  margin-block: 1rem;
+  background-color: rgb(186, 20, 212);
+}
+* body main #game, * body main #result {
+  padding: 1rem;
+}
+* body main #game .key, * body main #result .key {
+  font-weight: bold;
+}
+* body main #game span {
+  display: inline-block;
+}
+@media (min-width: 768px) {
+  * body main #game span {
+    display: inline;
+  }
+}
+* body main #choices {
+  font-size: 6rem;
+  text-align: center;
+  background-color: rgb(202, 14, 231);
+}
+* body main #result {
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */
