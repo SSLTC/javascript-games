@@ -26,6 +26,7 @@ elResult.addEventListener("click", () => {
         elResult.innerHTML = `You guessed wrong<br/> The number was ${randomNumber}`;  
     }
 
+    elResult.style.cursor = "";
     elNumberInput.value = null;
     elNumberInput.setAttribute("disabled", false);
 });
@@ -34,6 +35,7 @@ elResult.style.visibility = "hidden";
 const elNumberInput = document.querySelector("#guess");
 elNumberInput.addEventListener("change", (e) => {
     if(elNumberInput.value != null) {
+        elResult.style.cursor = "pointer";
         elResult.style.visibility = "visible";
     }
 });

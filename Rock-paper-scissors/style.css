@@ -1,1 +1,24 @@
-/*# sourceMappingURL=style.css.map */
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+* body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+* body header {
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+* body header h1 {
+  font-size: 1.3rem;
+  text-align: right;
+}
+* body header h1 span {
+  display: block;
+}
+@media (min-width: 768px) {
+  * body header h1 span {
+    display: inline;
+  }
+}/*# sourceMappingURL=style.css.map */
