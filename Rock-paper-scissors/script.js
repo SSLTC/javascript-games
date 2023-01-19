@@ -1,6 +1,11 @@
 import { getRndInteger } from "../modules/getRndInteger.js";
 
-const lstChoices = ["&#x270A;", "&#x270B;", "&#x270C;"];
+const rock = "&#x270A;";
+const paper = "&#x270B;"
+const scissors = "&#x270C;"
+
+const lstChoices = [rock, paper, scissors];
+
 const questionMark = "&#x2753";
 
 let randomChoice = lstChoices[getRndInteger(0, 2)];
@@ -48,12 +53,19 @@ const playGame = () => {
         case (userChoice === randomChoice):
             message = "IT IS A DRAW!";
             break;
-        case (userChoice > randomChoice):
-            message = "YOU WON!";
-            break;
-        case (userChoice < randomChoice):
+
+        case (userChoice === scissors && randomChoice === rock):
             message = "YOU LOSE!";
             break;
+        
+        case (userChoice === rock && randomChoice === scissors):
+        case (userChoice > randomChoice):
+                message = "YOU WON!";
+                break; 
+        
+        case (userChoice < randomChoice):
+                message = "YOU LOSE!";
+                break;
     }
 
     showMessage(`${message}<br/>Press (<b>N</b>) for new game`);
