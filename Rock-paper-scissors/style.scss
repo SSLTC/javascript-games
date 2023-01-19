@@ -15,7 +15,7 @@
 
         @include media-queries.screen-min(media-queries.$screen-lg){
             margin: 25% auto;
-            width: 50vw;
+            width: 60vw;
         }
 
         header {
@@ -57,7 +57,20 @@
             }
 
             #choices {
-                font-size: 6rem;
+                font-size: 4rem;
+
+                @include media-queries.screen-min(media-queries.$screen-md){
+                    font-size: 5rem;
+                }
+
+                @include media-queries.screen-min(media-queries.$screen-lg){
+                    font-size: 7rem;
+                }
+
+                @include media-queries.screen-min(media-queries.$screen-xl){
+                    font-size: 8rem;
+                }
+
                 text-align: center;
                 background-color: rgb(202, 14, 231);
             }

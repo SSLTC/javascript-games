@@ -38,14 +38,15 @@ const onKeyUp = (e) => {
 
 }
 
+let scoreUser = 0;
+let scoreComputer = 0;
+
 const showChoices = (user, computer) => {
     const elChoices = document.querySelector("#choices");
-    elChoices.innerHTML = user + ' ' + computer;
+    elChoices.innerHTML = scoreUser + ' ' + user + ' ' + computer + ' ' + scoreComputer;
 }
 
 const playGame = () => {
-
-    showChoices(userChoice, randomChoice)
 
     let message;
 
@@ -56,18 +57,22 @@ const playGame = () => {
 
         case (userChoice === scissors && randomChoice === rock):
             message = "YOU LOSE!";
+            scoreComputer += 1;
             break;
         
         case (userChoice === rock && randomChoice === scissors):
         case (userChoice > randomChoice):
-                message = "YOU WON!";
-                break; 
+            message = "YOU WON!";
+            scoreUser += 1;
+            break; 
         
         case (userChoice < randomChoice):
-                message = "YOU LOSE!";
-                break;
+            message = "YOU LOSE!";
+            scoreComputer += 1;
+            break;
     }
 
+    showChoices(userChoice, randomChoice)
     showMessage(`${message}<br/>Press (<b>N</b>) for new game`);
 }
 

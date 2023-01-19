@@ -15,7 +15,7 @@
 @media (min-width: 992px) {
   * body {
     margin: 25% auto;
-    width: 50vw;
+    width: 60vw;
   }
 }
 * body header {
@@ -53,9 +53,24 @@
   }
 }
 * body main #choices {
-  font-size: 6rem;
+  font-size: 4rem;
   text-align: center;
   background-color: rgb(202, 14, 231);
+}
+@media (min-width: 768px) {
+  * body main #choices {
+    font-size: 5rem;
+  }
+}
+@media (min-width: 992px) {
+  * body main #choices {
+    font-size: 7rem;
+  }
+}
+@media (min-width: 1200px) {
+  * body main #choices {
+    font-size: 8rem;
+  }
 }
 * body main #result {
   text-align: center;
