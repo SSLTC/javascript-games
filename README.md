@@ -13,8 +13,18 @@ ___
 
 ### Rock-paper-scissors
 
--
+- Start a game by pressing the corresponding keyboard key
+- Different message by each outcome
+- Keep track of score
 
 <a href="./Rock-paper-scissors">Rock-paper-scissors Link</a>
+
+___
+
+### 21-card-game
+
+- 
+
+<a href="./21-card-game">21-card-game Link</a>
 
 ___
