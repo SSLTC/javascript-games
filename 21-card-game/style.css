@@ -17,4 +17,11 @@
     margin: 25% auto;
     width: 60vw;
   }
+}
+* body main #cardsUser .card, * body main #cardsComputer .card {
+  display: inline-block;
+  font-size: 4rem;
+  text-align: center;
+  width: 5rem;
+  border: 1px solid #000000;
 }/*# sourceMappingURL=style.css.map */
