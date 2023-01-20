@@ -1,0 +1,21 @@
+@use "../../modules/scss-modules/media-queries/media-queries";
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+
+    body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+        @include media-queries.screen-min(media-queries.$screen-md){
+            margin: 25% auto;
+            width: 70vw;
+        }
+
+        @include media-queries.screen-min(media-queries.$screen-lg){
+            margin: 25% auto;
+            width: 60vw;
+        }
+    }
+}
