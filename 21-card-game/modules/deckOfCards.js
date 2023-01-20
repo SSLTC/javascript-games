@@ -1,19 +1,19 @@
-const deck = [
+const deckOfCards = [
     {
-      color: "heart",
+      suit: "heart",
       card: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"],
     },
     {
-      color: "diamond",
+      suit: "diamond",
       card: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"],
     },
     {
-      color: "club",
+      suit: "club",
       card: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"],
     },
     {
-      color: "spades",
+      suit: "spades",
       card: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"],
     }
   ];
-  export default deck;
+export default deckOfCards;

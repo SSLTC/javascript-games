@@ -1,4 +1,4 @@
-import { getRndInteger } from "../modules/getRndInteger.js";
+import { getRndInteger } from "./getRndInteger.js";
 
 const rock = "&#x270A;";
 const paper = "&#x270B;"
