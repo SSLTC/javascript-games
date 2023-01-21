@@ -25,6 +25,8 @@ const drawCard = () => {
 const cardsUser = [];
 const cardsComputer = [];
 
+const stickComputer = false;
+
 let listenKeyUp = true;
 
 const onKeyUp = (e) => {
@@ -34,7 +36,23 @@ const onKeyUp = (e) => {
     switch(e.code) {
         case "KeyH":
             cardsUser.push(drawCard());
+
+            if(calculateTotal(cardsUser) > 21) {
+                showMessage("YOU LOSE!");
+                scoreComputer += 1;
+            }
+
             showCards(cardsUser, "#cardsUser");
+
+            if(stickComputer !== true) {
+                cardsComputer.push(drawCard());
+
+                if(calculateTotal(cardsComputer) > 21) {
+                    showMessage("YOU WIN!");
+                    scoreUser += 1;
+                }
+            }
+
             break;
         case "KeyS":
             // stick
@@ -49,10 +67,34 @@ const onKeyUp = (e) => {
 
 }
 
+const calculateTotal = (cards) => {
+    // Pass an array
+
+    const total = cards.reduce(funcTotal = (total, value) => {
+        switch(value) {
+            case ("J" || "Q" || "K"):
+                value = 10;
+        }
+
+        return total + value;
+    });
+
+    return total;
+}
+
+const computerCalculation = () => {
+    const total = calculateTotal(cardsComputer);
+
+
+
+}
+
 let scoreUser = 0;
 let scoreComputer = 0;
 
 const showCards = (cards, idCards) => {
+    // Pass an array and a string
+
     const elCard = document.createElement("div");
     elCard.classList.add("card");
     elCard.innerHTML = cards[cards.length -1];
