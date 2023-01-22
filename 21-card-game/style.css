@@ -8,20 +8,100 @@
 }
 @media (min-width: 768px) {
   * body {
-    margin: 25% auto;
+    margin: 10% auto;
     width: 70vw;
   }
 }
 @media (min-width: 992px) {
   * body {
-    margin: 25% auto;
+    margin: 10% auto;
     width: 60vw;
   }
 }
+* body header {
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+* body header h1 {
+  font-size: 1.3rem;
+  text-align: right;
+}
+* body header h1 span {
+  display: block;
+}
+@media (min-width: 768px) {
+  * body header h1 span {
+    display: inline;
+  }
+}
+* body main {
+  background-color: rgb(186, 20, 212);
+}
+* body main #game, * body main #result {
+  padding: 1rem;
+}
+* body main #game .key, * body main #result .key {
+  font-weight: bold;
+}
+* body main #game span {
+  display: inline-block;
+}
+@media (min-width: 768px) {
+  * body main #game span {
+    display: inline;
+  }
+}
+* body main #cardsUser, * body main #cardsComputer {
+  padding: 2rem;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  background-color: rgb(202, 14, 231);
+}
 * body main #cardsUser .card, * body main #cardsComputer .card {
+  padding-top: 1.5rem;
   display: inline-block;
   font-size: 4rem;
-  text-align: center;
+  height: 8rem;
   width: 5rem;
+  text-align: center;
   border: 1px solid #000000;
+  border-radius: 15px;
+  background-color: gray;
+  box-shadow: 2px 2px 20px 2px #000000;
+}
+@media (min-width: 768px) {
+  * body main #cardsUser .card, * body main #cardsComputer .card {
+    font-size: 5rem;
+    height: 9rem;
+    width: 6rem;
+  }
+}
+@media (min-width: 992px) {
+  * body main #cardsUser .card, * body main #cardsComputer .card {
+    font-size: 7rem;
+    height: 11rem;
+    width: 8rem;
+  }
+}
+@media (min-width: 1200px) {
+  * body main #cardsUser .card, * body main #cardsComputer .card {
+    font-size: 8rem;
+    height: 12rem;
+    width: 9rem;
+  }
+}
+* body main #result {
+  text-align: center;
+}
+* body main .greenBackgroundColor {
+  background-color: #008000;
+}
+* body main .orangeBackgroundColor {
+  background-color: #ffa500;
+}
+* body main .redBackgroundColor {
+  background-color: #ff0000;
 }/*# sourceMappingURL=style.css.map */

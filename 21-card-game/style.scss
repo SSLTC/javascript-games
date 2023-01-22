@@ -9,24 +9,108 @@
         font-family: Verdana, Geneva, Tahoma, sans-serif;
 
         @include media-queries.screen-min(media-queries.$screen-md){
-            margin: 25% auto;
+            margin: 10% auto;
             width: 70vw;
         }
 
         @include media-queries.screen-min(media-queries.$screen-lg){
-            margin: 25% auto;
+            margin: 10% auto;
             width: 60vw;
         }
 
+        header {
+            margin-top: 1rem;
+            margin-right: 1rem;
+            
+            h1 {
+                font-size: 1.3rem;
+                text-align: right;
+
+                span {
+                    display: block;
+
+                    @include media-queries.screen-min(media-queries.$screen-md){
+                        display: inline;
+                    }
+                }
+            }
+        }
+
         main {
+            background-color: rgb(186, 20, 212);
+
+            #game, #result {
+                padding: 1rem;
+
+                .key {
+                    font-weight: bold;
+                }
+            }
+
+            #game span {
+                display: inline-block;
+
+                @include media-queries.screen-min(media-queries.$screen-md){
+                    display: inline;
+                }
+            }
+
             #cardsUser, #cardsComputer {
+                padding: 2rem;
+                display: flex;
+                flex-flow: row;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+                background-color: rgb(202, 14, 231);
+
                 .card {
+                    padding-top: 1.5rem;
                     display: inline-block;
                     font-size: 4rem;
-                    text-align: center;
+                    height: 8rem;
                     width: 5rem;
+
+                    @include media-queries.screen-min(media-queries.$screen-md){
+                        font-size: 5rem;
+                        height: 9rem;
+                        width: 6rem;
+                    }
+
+                    @include media-queries.screen-min(media-queries.$screen-lg){
+                        font-size: 7rem;
+                        height: 11rem;
+                        width: 8rem;
+                    }
+
+                    @include media-queries.screen-min(media-queries.$screen-xl){
+                        font-size: 8rem;
+                        height: 12rem;
+                        width: 9rem;
+                    }
+
+                    text-align: center;
                     border: 1px solid #000000;
+                    border-radius: 15px;
+                    background-color: gray;
+                    box-shadow: 2px 2px 20px 2px #000000;
                 }
+            }
+
+            #result {
+                text-align: center;
+            }
+
+            .greenBackgroundColor {
+                background-color: #008000;
+            }
+
+            .orangeBackgroundColor {
+                background-color: #ffa500;
+            }
+
+            .redBackgroundColor {
+                background-color: #ff0000;
             }
         }
     }

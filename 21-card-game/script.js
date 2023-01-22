@@ -2,81 +2,123 @@ import deckOfCards from "./modules/deckOfCards.js";
 import gameplay21cardGame from "./modules/21Rules.js";
 import getRndInteger from "./modules/getRndInteger.js";
 
+const cardsUser = [];
+const cardsComputer = [];
+
+let newDeckOfCards;
+
+let stickComputer = false;
+
+let scoreUser = 0;
+let scoreComputer = 0;
+
+let endGame = true;
+
+const setInitialValues = () => {
+
+    cardsUser.length = 0;
+    cardsComputer.length = 0;
+
+    showCards(cardsUser, "#cardsUser");
+    showCards(cardsComputer, "#cardsComputer");
+
+    showMessage("");
+
+    newDeckOfCards = structuredClone(deckOfCards);
+
+    stickComputer = false;
+}
+
 const drawCard = () => {
-    const randomSuit = getRndInteger(0, 3);
-    const randomCardOfSuit = getRndInteger(0, 12);
-    
-    const randomDrawnCard = deckOfCards[randomSuit].card[randomCardOfSuit];
 
-    if(typeof randomDrawnCard == "undefined") {
-        // draw again
-        drawCard();
-    }
-    
-    const removedCard = deckOfCards[randomSuit].card.splice(randomCardOfSuit, 1);
+    let randomSuit = 0;
+    let randomCardOfSuit = 0;
+    let randomDrawnCard = "";
 
-    //console.log(randomDrawnCard);
-    //console.log(removedCard);
+    do {
+        randomSuit = getRndInteger(0, 3);
+        randomCardOfSuit = getRndInteger(0, 12);
+        
+        randomDrawnCard = newDeckOfCards[randomSuit].card[randomCardOfSuit];
+
+    } while (typeof(randomDrawnCard) === "undefined");
+
+    const removedCard = newDeckOfCards[randomSuit].card.splice(randomCardOfSuit, 1);
 
     return randomDrawnCard;
 }
 
-
-const cardsUser = [];
-const cardsComputer = [];
-
-const stickComputer = false;
-
-let listenKeyUp = true;
-
 const onKeyUp = (e) => {
 
-    if(listenKeyUp === false && e.code !== "KeyN") {return};
+    if(endGame === true && e.code !== "KeyN") { return };
     
     switch(e.code) {
         case "KeyH":
+
             cardsUser.push(drawCard());
+
+            showCards(cardsUser, "#cardsUser");
 
             if(calculateTotal(cardsUser) > 21) {
                 showMessage("YOU LOSE!");
                 scoreComputer += 1;
+                return;
             }
 
-            showCards(cardsUser, "#cardsUser");
-
-            if(stickComputer !== true) {
-                cardsComputer.push(drawCard());
-
-                if(calculateTotal(cardsComputer) > 21) {
-                    showMessage("YOU WIN!");
-                    scoreUser += 1;
-                }
-            }
+            drawComputer();
 
             break;
+
         case "KeyS":
-            // stick
-            //playGame();
+
+            if(stickComputer === true) 
+            { 
+                stickGame();
+
+            } else {
+                // do loop until stick computer
+                drawComputer();
+            }
+            
             break;
         case "KeyN":
-            newGame();
-            return;
+            if(endGame === true) { 
+                newGame(); 
+            }
+
+            break;
     }
+}
 
-    //listenKeyUp = false;
+const drawComputer = () => {
+    if(stickComputer !== true) {
+        cardsComputer.push(drawCard());
 
+        showCards(cardsComputer, "#cardsComputer");
+
+        if(calculateTotal(cardsComputer) > 21) {
+            showMessage("YOU WON!");
+            scoreUser += 1;
+            return;
+        }
+
+        computerCalculation();
+    }
 }
 
 const calculateTotal = (cards) => {
     // Pass an array
 
-    const total = cards.reduce(funcTotal = (total, value) => {
+    const total = cards.reduce((total, value) => {
+
         switch(value) {
-            case ("J" || "Q" || "K"):
+            case "J":
+            case "Q":
+            case "K":
                 value = 10;
         }
 
-        return total + value;
+        return parseInt(total) + parseInt(value);
     });
 
     return total;
@@ -85,51 +127,54 @@ const calculateTotal = (cards) => {
 const computerCalculation = () => {
     const total = calculateTotal(cardsComputer);
 
-
-
+    switch(true) {
+        case total === 21:
+            stickComputer = true;
+        case total > 11:
+            stickComputer = true;
+    }
 }
-
-let scoreUser = 0;
-let scoreComputer = 0;
 
 const showCards = (cards, idCards) => {
     // Pass an array and a string
 
-    const elCard = document.createElement("div");
-    elCard.classList.add("card");
-    elCard.innerHTML = cards[cards.length -1];
-
     const elCards = document.querySelector(idCards);
-    elCards.appendChild(elCard);
+
+    if(cards.length == 0) {
+        elCards.innerHTML = "";
+    } else {
+        const elCard = document.createElement("div");
+        elCard.classList.add("card");
+        elCard.innerHTML = cards[cards.length -1];
+
+        elCards.appendChild(elCard);
+    }
 }
 
-const playGame = () => {
+const stickGame = () => {
 
     let message;
 
+    const totalUser = calculateTotal(cardsUser);
+    const totalComputer = calculateTotal(cardsComputer);
+
     switch(true) {
-        case (userChoice === randomChoice):
+        case (totalUser === totalComputer):
             message = "IT IS A DRAW!";
             break;
-
-        case (userChoice === scissors && randomChoice === rock):
-            message = "YOU LOSE!";
-            scoreComputer += 1;
-            break;
         
-        case (userChoice === rock && randomChoice === scissors):
-        case (userChoice > randomChoice):
+        case (totalUser > totalComputer):
             message = "YOU WON!";
             scoreUser += 1;
             break; 
         
-        case (userChoice < randomChoice):
+        case (totalUser < totalComputer):
             message = "YOU LOSE!";
             scoreComputer += 1;
             break;
     }
 
-    showChoices(userChoice, randomChoice)
+    // showCardsComputer()
     showMessage(`${message}<br/>Press (<b>N</b>) for new game`);
 }
 
@@ -149,10 +194,13 @@ const showMessage = (msg) => {
     }
 
     elResult.innerHTML = msg;
+
+    endGame = true;
 }
 
 const newGame = () => {
-    showMessage("");
+    
+    setInitialValues();
 
     // Draw two cards to begin the game
     cardsUser.push(drawCard());
@@ -165,9 +213,7 @@ const newGame = () => {
     cardsComputer.push(drawCard());
     showCards(cardsComputer, "#cardsComputer");
 
-    listenKeyUp = true;
+    endGame = false;
 }
-
-//newGame()
 
 document.body.addEventListener("keyup", onKeyUp);
