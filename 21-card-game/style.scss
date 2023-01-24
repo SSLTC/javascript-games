@@ -6,33 +6,25 @@
     padding: 0px;
 
     body {
+        margin-top: 1rem;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 0.8rem;
 
         @include media-queries.screen-min(media-queries.$screen-md){
-            margin: 10% auto;
-            width: 70vw;
-        }
-
-        @include media-queries.screen-min(media-queries.$screen-lg){
-            margin: 10% auto;
+            margin: 5% auto;
             width: 60vw;
         }
 
         header {
-            margin-top: 1rem;
             margin-right: 1rem;
+
+            @include media-queries.screen-min(media-queries.$screen-md){
+                margin: 0rem;
+            }
             
             h1 {
                 font-size: 1.3rem;
                 text-align: right;
-
-                span {
-                    display: block;
-
-                    @include media-queries.screen-min(media-queries.$screen-md){
-                        display: inline;
-                    }
-                }
             }
         }
 
@@ -40,7 +32,7 @@
             background-color: rgb(186, 20, 212);
 
             #game, #result {
-                padding: 1rem;
+                padding: 0.5rem;
 
                 .key {
                     font-weight: bold;
@@ -52,41 +44,30 @@
 
                 @include media-queries.screen-min(media-queries.$screen-md){
                     display: inline;
+                    padding: 1rem;
                 }
             }
 
             #cardsUser, #cardsComputer {
-                padding: 2rem;
+                padding: 1rem;
                 display: flex;
                 flex-flow: row;
-                flex-wrap: wrap;
-                gap: 1rem;
+                flex-wrap:  nowrap;
+                gap: 0.5rem;
                 justify-content: center;
                 background-color: rgb(202, 14, 231);
 
                 .card {
-                    padding-top: 1.5rem;
+                    padding-top: 0.7rem;
                     display: inline-block;
-                    font-size: 4rem;
-                    height: 8rem;
-                    width: 5rem;
+                    font-size: 2rem;
+                    height: 4rem;
+                    width: 3rem;
 
                     @include media-queries.screen-min(media-queries.$screen-md){
-                        font-size: 5rem;
-                        height: 9rem;
-                        width: 6rem;
-                    }
-
-                    @include media-queries.screen-min(media-queries.$screen-lg){
-                        font-size: 7rem;
-                        height: 11rem;
-                        width: 8rem;
-                    }
-
-                    @include media-queries.screen-min(media-queries.$screen-xl){
-                        font-size: 8rem;
-                        height: 12rem;
-                        width: 9rem;
+                        font-size: 3rem;
+                        height: 5rem;
+                        width: 4rem;
                     }
 
                     text-align: center;

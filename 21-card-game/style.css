@@ -4,41 +4,33 @@
   padding: 0px;
 }
 * body {
+  margin-top: 1rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.8rem;
 }
 @media (min-width: 768px) {
   * body {
-    margin: 10% auto;
-    width: 70vw;
-  }
-}
-@media (min-width: 992px) {
-  * body {
-    margin: 10% auto;
+    margin: 5% auto;
     width: 60vw;
   }
 }
 * body header {
-  margin-top: 1rem;
   margin-right: 1rem;
+}
+@media (min-width: 768px) {
+  * body header {
+    margin: 0rem;
+  }
 }
 * body header h1 {
   font-size: 1.3rem;
   text-align: right;
 }
-* body header h1 span {
-  display: block;
-}
-@media (min-width: 768px) {
-  * body header h1 span {
-    display: inline;
-  }
-}
 * body main {
   background-color: rgb(186, 20, 212);
 }
 * body main #game, * body main #result {
-  padding: 1rem;
+  padding: 0.5rem;
 }
 * body main #game .key, * body main #result .key {
   font-weight: bold;
@@ -49,23 +41,24 @@
 @media (min-width: 768px) {
   * body main #game span {
     display: inline;
+    padding: 1rem;
   }
 }
 * body main #cardsUser, * body main #cardsComputer {
-  padding: 2rem;
+  padding: 1rem;
   display: flex;
   flex-flow: row;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
   justify-content: center;
   background-color: rgb(202, 14, 231);
 }
 * body main #cardsUser .card, * body main #cardsComputer .card {
-  padding-top: 1.5rem;
+  padding-top: 0.7rem;
   display: inline-block;
-  font-size: 4rem;
-  height: 8rem;
-  width: 5rem;
+  font-size: 2rem;
+  height: 4rem;
+  width: 3rem;
   text-align: center;
   border: 1px solid #000000;
   border-radius: 15px;
@@ -74,23 +67,9 @@
 }
 @media (min-width: 768px) {
   * body main #cardsUser .card, * body main #cardsComputer .card {
-    font-size: 5rem;
-    height: 9rem;
-    width: 6rem;
-  }
-}
-@media (min-width: 992px) {
-  * body main #cardsUser .card, * body main #cardsComputer .card {
-    font-size: 7rem;
-    height: 11rem;
-    width: 8rem;
-  }
-}
-@media (min-width: 1200px) {
-  * body main #cardsUser .card, * body main #cardsComputer .card {
-    font-size: 8rem;
-    height: 12rem;
-    width: 9rem;
+    font-size: 3rem;
+    height: 5rem;
+    width: 4rem;
   }
 }
 * body main #result {

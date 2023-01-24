@@ -5,8 +5,9 @@ import getRndInteger from "./modules/getRndInteger.js";
 const cardsUser = [];
 const cardsComputer = [];
 
-let newDeckOfCards;
+let shuffledDeckOfCards;
 
+let stickUser = false;
 let stickComputer = false;
 
 let scoreUser = 0;
@@ -24,7 +25,7 @@ const setInitialValues = () => {
 
     showMessage("");
 
-    newDeckOfCards = structuredClone(deckOfCards);
+    shuffledDeckOfCards = structuredClone(deckOfCards);
 
     stickComputer = false;
 }
@@ -39,11 +40,11 @@ const drawCard = () => {
         randomSuit = getRndInteger(0, 3);
         randomCardOfSuit = getRndInteger(0, 12);
         
-        randomDrawnCard = newDeckOfCards[randomSuit].card[randomCardOfSuit];
+        randomDrawnCard = shuffledDeckOfCards[randomSuit].card[randomCardOfSuit];
 
     } while (typeof(randomDrawnCard) === "undefined");
 
-    const removedCard = newDeckOfCards[randomSuit].card.splice(randomCardOfSuit, 1);
+    const removedCard = shuffledDeckOfCards[randomSuit].card.splice(randomCardOfSuit, 1);
 
     return randomDrawnCard;
 }
@@ -55,15 +56,7 @@ const onKeyUp = (e) => {
     switch(e.code) {
         case "KeyH":
 
-            cardsUser.push(drawCard());
-
-            showCards(cardsUser, "#cardsUser");
-
-            if(calculateTotal(cardsUser) > 21) {
-                showMessage("YOU LOSE!");
-                scoreComputer += 1;
-                return;
-            }
+            drawUser();
 
             drawComputer();
 
@@ -73,9 +66,10 @@ const onKeyUp = (e) => {
 
             if(stickComputer === true) 
             { 
-                stickGame();
+                showHands();
 
             } else {
+                stickUser = true;
                 // do loop until stick computer
                 drawComputer();
             }
@@ -90,11 +84,29 @@ const onKeyUp = (e) => {
     }
 }
 
-const drawComputer = () => {
-    if(stickComputer !== true) {
-        cardsComputer.push(drawCard());
+const drawUser = () => {
+    cardsUser.push(drawCard());
 
-        showCards(cardsComputer, "#cardsComputer");
+    showCards(cardsUser, "#cardsUser");
+
+    if(calculateTotal(cardsUser) > 21) {
+        showMessage("YOU LOSE!");
+        scoreComputer += 1;
+        return;
+    }
+}
+
+const drawComputer = (amount = 1) => {
+    if(stickComputer !== true) {
+
+        let cards = 0;
+        while (cards < amount) {
+            cardsComputer.push(drawCard());
+
+            showCards(cardsComputer, "#cardsComputer");
+
+            cards++;
+        }
 
         if(calculateTotal(cardsComputer) > 21) {
             showMessage("YOU WON!");
@@ -103,7 +115,9 @@ const drawComputer = () => {
         }
 
         computerCalculation();
-    }
+
+        if(stickUser) { drawComputer; }
+    } else if(stickUser) { showHands(); }
 }
 
 const calculateTotal = (cards) => {
@@ -116,6 +130,7 @@ const calculateTotal = (cards) => {
             case "Q":
             case "K":
                 value = 10;
+                break;
         }
 
         return parseInt(total) + parseInt(value);
@@ -130,8 +145,10 @@ const computerCalculation = () => {
     switch(true) {
         case total === 21:
             stickComputer = true;
+            break;
         case total > 11:
             stickComputer = true;
+            break;
     }
 }
 
@@ -151,9 +168,10 @@ const showCards = (cards, idCards) => {
     }
 }
 
-const stickGame = () => {
+const showHands = () => {
 
-    let message;
+    let message = "";
+    endGame = true;
 
     const totalUser = calculateTotal(cardsUser);
     const totalComputer = calculateTotal(cardsComputer);
@@ -174,7 +192,8 @@ const stickGame = () => {
             break;
     }
 
-    // showCardsComputer()
+    // showCardsComputer() ***
+
     showMessage(`${message}<br/>Press (<b>N</b>) for new game`);
 }
 
@@ -203,15 +222,10 @@ const newGame = () => {
     setInitialValues();
 
     // Draw two cards to begin the game
-    cardsUser.push(drawCard());
-    showCards(cardsUser, "#cardsUser");
-    cardsUser.push(drawCard());
-    showCards(cardsUser, "#cardsUser");
+    drawUser();
+    drawUser();
 
-    cardsComputer.push(drawCard());
-    showCards(cardsComputer, "#cardsComputer");
-    cardsComputer.push(drawCard());
-    showCards(cardsComputer, "#cardsComputer");
+    drawComputer(2);
 
     endGame = false;
 }
