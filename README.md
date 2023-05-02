@@ -1,7 +1,3 @@
-# verou-4-javascript-games-SSLTC
-
-## Games
-
 ### Guessing-game
 
 - Let you only guess once the random generated number
@@ -23,8 +19,6 @@ ___
 
 ### 21-card-game
 
-- 
+- Still in development
 
 <a href="./21-card-game">21-card-game Link</a>
-
-___
